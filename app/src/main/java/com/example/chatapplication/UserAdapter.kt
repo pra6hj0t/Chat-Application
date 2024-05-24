@@ -1,6 +1,7 @@
 package com.example.chatapplication
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,13 @@ class UserAdapter(val context :Context,val userList : ArrayList<User>):RecyclerV
         val currentUser = userList[position]
 
         holder.textName.text = currentUser.name
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context,Chat_Screen::class.java)
+            intent.putExtra("name",currentUser.name)
+            intent.putExtra("uid",currentUser.uid)
+            context.startActivity(intent)
+        }
     }
 
 
